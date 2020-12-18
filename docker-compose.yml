@@ -1,0 +1,52 @@
+# Use root/example as user/password credentials
+version: "3.1"
+
+services:
+  db1:
+    hostname: db1
+    image: qtrj.i234.me:8084/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3301:3306
+    volumes:
+      #  docker cp  6b6dd5efbc23:/etc/mysql/conf.d ./db1/
+      - ./db1/conf.d:/etc/mysql/conf.d
+      - ./db1/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+  db2:
+    hostname: db2
+    image: qtrj.i234.me:8084/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    links:
+      - db1 # 解决容器间端口互通问题；因配置了hostname，so，此配置可以注释掉
+    ports:
+      - 3302:3306
+    volumes:
+      - ./db2/conf.d:/etc/mysql/conf.d
+      - ./db2/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+  adminer:
+    hostname: adminer
+    image: qtrj.i234.me:8084/adminer
+    restart: always
+    ports:
+      - 8080:8080
+  # docker run --name mycat -p 8066:8066 -p 9066:9066 -d qtrj.i234.me:8084/manondidi/mycat
+  mycat:
+    hostname: mycat
+    build: ./mycat/
+    restart: always
+    links:
+      - db1 # 解决容器间端口互通问题；因配置了hostname，so，此配置可以注释掉
+    ports:
+      - 8066:8066
+      - 9066:9066
+    volumes:
+      # docker cp  6b6dd5efbc23:/usr/local/mycat/conf/ ./mycat/
+      # docker cp  6b6dd5efbc23:/usr/local/mycat/logs/ ./mycat/
+      - ./mycat/conf:/usr/local/mycat/conf
+      - ./mycat/logs:/usr/local/mycat/logs

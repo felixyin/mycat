@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+
+	<schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100">
+		<table name="t_user" dataNode="dn1,dn2,dn3" rule="auto-sharding-long">
+			<childTable name="t_admin" joinKey="user_id" parentKey="id" />
+		</table>
+	</schema>
+	<dataNode name="dn1" dataHost="localhost1" database="db1" />
+	<dataNode name="dn2" dataHost="localhost1" database="db2" />
+	<dataNode name="dn3" dataHost="localhost1" database="db3" />
+
+	<dataHost name="localhost1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
+		<heartbeat>show slave status</heartbeat>
+		<!-- can have multi write hosts -->
+		<writeHost host="hostM1" url="db1:3306" user="root" password="123456"></writeHost>
+	</dataHost>
+</mycat:schema>
