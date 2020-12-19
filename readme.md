@@ -4,6 +4,11 @@
 
 > 主从库、读写分离、分库分表、haproxy+keepalived 高可用
 
+## 环境
+
+- docker
+- docker-compose
+
 ## 第一次运行需执行
 
 将 mysql 数据存储位置放到宿主机
