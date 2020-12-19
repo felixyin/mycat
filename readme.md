@@ -4,6 +4,12 @@
 
 > 主从库、读写分离、分库分表、haproxy+keepalived 高可用
 
+## 视频
+
+https://qtrj.i234.me/video/#!lib%E5%AD%A6%E4%B9%A0/N4IgNglgRgTghjAniAXCAFgewLYFMD6AbhACa6YC0ATCADQgDGcALrgOaZKogBmmYZGHRAAHOG1yoAjPT4DcQlAG1QpbgHpC-AK54q6gCwAVdYDNtQAZy6wJqmgaC91AKziE4wsc3RGIzMJLSPnIAC+tKokGlpgurj6xmaWtg5OcOqACAyAFoqA6pqAiAwAUkmZgH-RNq4sHl4+3OnZec6FxcGh4Tp6hiYW1nb+yVW5+RlF6oBJcoAqAYCK-oBt5oAh5oBsaYCt1iXunt6+ICMTM-MNIGpoms3RrXEdic6pmb21-XZrU3PqUgDMAHQABIAOpoB2xoDJeoBjaYAl-oAYlUAG1mANz1AIvKCzKy24j1en1+gNBEK2OxAe0iLVi7QSXTO1T6AxuG3uz3e33+wPB6kAY5GARIzIUsKmg6UEALqBIA
+
+> 未转码，未公开，登录可查看
+
 ## 环境
 
 - docker
