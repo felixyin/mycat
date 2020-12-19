@@ -1,6 +1,8 @@
 # mysql 主从及 mycat
 
-基于 docker 快速跑一个 mysql 主从和 mycat 服务
+基于 docker 快速跑一个 mysql 主从和 mycat 高级服务。
+
+> 主从库、读写分离、分库分表、haproxy+keepalived 高可用
 
 ## 第一次运行需执行
 
@@ -56,7 +58,7 @@ show slave status;
 
 > 如果没有错误，则表示主从搭建完毕
 
-## mycat 配置
+## mycat 分库分表配置
 
 1. 登录 master mysql，创建 mycat 用户
 
@@ -123,3 +125,16 @@ INSERT INTO T_ADMIN(ID, NAME, USER_ID) VALUES(10, 'ADMIN0', 5);
 SELECT \* FROM T_USER LEFT JOIN T_ADMIN ON T_USER.ID = T_ADMIN.USER_ID;
 --查询结果：
 ```
+
+## mycat 读写分离配置
+
+```
+<!-- 读写数据库 分离 -->
+	<writeHost host="hostM1" url="db1:3306" user="root" password="123456">
+        <readHost host="hostS2" url="db2:3306" user="root" password="123456"></readHost>
+    </writeHost>
+```
+
+##　数据库高可用解决方案
+
+![gao-ke-yong](/assets/gao-ke-yong_v61jsb90a.png)

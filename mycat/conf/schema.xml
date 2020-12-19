@@ -14,6 +14,8 @@
 	<dataHost name="localhost1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="2" slaveThreshold="100">
 		<heartbeat>show slave status</heartbeat>
 		<!-- can have multi write hosts -->
-		<writeHost host="hostM1" url="db1:3306" user="root" password="123456"></writeHost>
+		<writeHost host="hostM1" url="db1:3306" user="root" password="123456">
+			<readHost host="hostS2" url="db2:3306" user="root" password="123456"></readHost>
+		</writeHost>
 	</dataHost>
 </mycat:schema>
